@@ -1,0 +1,32 @@
+[
+    {
+        "user_id": 1,
+        "login": "dev",
+        "password": "secure_123",
+        "data_create": "2024-11-26",
+        "updated_at": "2024-11-26",
+        "role_id": 1,
+        "email": "dev_user@example.com",
+        "status": true
+    },
+    {
+        "user_id": 2,
+        "login": "admin",
+        "password": "admin",
+        "data_create": "2024-11-26",
+        "updated_at": "2024-11-26",
+        "role_id": 2,
+        "email": "admin_user@example.com",
+        "status": true
+    },
+    {
+        "user_id": 3,
+        "login": "pupil",
+        "password": "pupil",
+        "data_create": "2024-11-26",
+        "updated_at": "2024-11-26",
+        "role_id": 3,
+        "email": "normal_user@example.com",
+        "status": true
+    }
+]
