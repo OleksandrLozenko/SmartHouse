@@ -1,38 +1,123 @@
 .App {
-  text-align: center;
+  display: flex;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #344655; /* Темно-синий фон для всего приложения */
+  color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  width: 100%;
+  background-color: rgba(52, 70, 85, 0.95); /* Слегка прозрачный фон для боковой панели */
+  padding: 20px;
+  border-right: 2px solid #2c3e50; /* Утолщенная граница справа */
+  box-sizing: border-box; /* Учитываем padding и border в ширине элемента */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #4a6f8c; /* Синяя линия под заголовком для акцента */
+  padding-bottom: 5px;
+}
+
+.sidebar .link-button, .sidebar .dropdown-toggle {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background-color: #506680; /* Светло-серый фон для кнопок */
+  color: #ffffff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.sidebar .link-button:hover, .sidebar .dropdown-toggle:hover {
+  background-color: #5c7c90; /* Светлее при наведении */
+  transform: translateX(5px); /* Сдвиг вправо при наведении */
+}
+
+.sidebar .dropdown-toggle {
+  font-weight: 600; /* Жирный шрифт для основных категорий */
+  background-color: #455570; /* Темнее фон для выделения */
+}
+
+.sidebar .dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .dropdown-menu .link-button {
+  padding-left: 30px; /* Увеличиваем отступ для вложенных элементов */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #2c3e50; /* Темный фон для контента */
+  overflow-y: auto; /* Прокрутка, если контент выходит за рамки */
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.control-button {
+  flex: 1 1 100%; /* Кнопки на всю ширину на мобильных */
+  margin-right: 0;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #4a6f8c;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Добавляем тень для объема */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.control-button:hover {
+  background-color: #3e5870;
+}
+
+.users-list {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #2c3e50;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #455570;
+}
+
+@media (min-width: 768px) {
+  .App {
+    flex-direction: row;
   }
-  to {
-    transform: rotate(360deg);
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .control-button {
+    flex: none;
+    margin-right: 10px;
+    margin-bottom: 0;
   }
 }

@@ -2,7 +2,7 @@
     {
         "user_id": 1,
         "login": "dev",
-        "password": "secure_123",
+        "password": "hidden",
         "data_create": "2024-11-26",
         "updated_at": "2024-11-26",
         "role_id": 1,
@@ -12,7 +12,7 @@
     {
         "user_id": 2,
         "login": "admin",
-        "password": "admin",
+        "password": "hidden",
         "data_create": "2024-11-26",
         "updated_at": "2024-11-26",
         "role_id": 2,
@@ -22,7 +22,7 @@
     {
         "user_id": 3,
         "login": "pupil",
-        "password": "pupil",
+        "password": "hidden",
         "data_create": "2024-11-26",
         "updated_at": "2024-11-26",
         "role_id": 3,

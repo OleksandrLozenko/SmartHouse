@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import usersData from './public/users.json'; // Импортируем JSON-файл
+import usersData from './public/users.json';
 
 function App() {
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Состояние меню
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [message, setMessage] = useState(''); // Состояние для сообщений сервера
 
   const sendCommand = async (command) => {
     try {
       const response = await axios.post('https://tolerant-parrot-brief.ngrok-free.app/toggle', { action: command });
-      alert(response.data.message); // Сообщение с сервера
+      setMessage(response.data.message); // Сохраняем сообщение от сервера в состояние
     } catch (error) {
       console.error("Ошибка при отправке команды:", error);
-      alert("Не удалось отправить команду.");
+      setMessage("Не удалось отправить команду."); // Сохраняем сообщение об ошибке
     }
   };
 
@@ -22,20 +23,18 @@ function App() {
         <h3>Навигация</h3>
         <nav>
           <ul>
-            <li><button className="link-button">Главная</button></li>
-            <li><button className="link-button">Уведомления</button></li>
-            <li><button className="link-button">Устройства</button></li>
-            <li><button className="link-button">Охрана/Безопасность</button></li>
-            <li><button className="link-button">Настройки</button></li>
             <li>
               <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-toggle">
                 Дополнительно
               </button>
               {dropdownOpen && (
                 <ul className="dropdown-menu">
-                  <li><button className="link-button">Выйти с аккаунта</button></li>
-                  <li><button className="link-button">Сменить аккаунт</button></li>
-                  <li><button className="link-button">Выключить устройство</button></li>
+                  <li><button className="link-button">Главная</button></li>
+                  <li><button className="link-button">Уведомления</button></li>
+                  <li><button className="link-button">Устройства</button></li>
+                  <li><button className="link-button">Охрана/Безопасность</button></li>
+                  <li><button className="link-button">Настройки</button></li>
+                  <li><button className="link-button">Выход</button></li>
                 </ul>
               )}
             </li>
@@ -48,6 +47,7 @@ function App() {
           <button onClick={() => sendCommand("on")} className="control-button">Включить лампочку</button>
           <button onClick={() => sendCommand("off")} className="control-button">Выключить лампочку</button>
         </header>
+        <p>{message}</p> {/* Отображение сообщений от сервера */}
         <div>
           <h2>Пользователи</h2>
           <ul>
