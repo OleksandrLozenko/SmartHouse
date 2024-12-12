@@ -1,0 +1,65 @@
+[
+    {
+        "room_name": "Зал",
+        "amenity_name": "Температура",
+        "value": 22.5,
+        "unit": "°C",
+        "updated_at": "2024-12-12 12:22:48"
+    },
+    {
+        "room_name": "Зал",
+        "amenity_name": "Влажность воздуха",
+        "value": 45.0,
+        "unit": "%",
+        "updated_at": "2024-12-12 12:22:48"
+    },
+    {
+        "room_name": "Зал",
+        "amenity_name": "Уровень освещения",
+        "value": 150.0,
+        "unit": "Люкс",
+        "updated_at": "2024-12-12 12:22:48"
+    },
+    {
+        "room_name": "Спальня",
+        "amenity_name": "Температура",
+        "value": 20.0,
+        "unit": "°C",
+        "updated_at": "2024-12-12 12:22:48"
+    },
+    {
+        "room_name": "Спальня",
+        "amenity_name": "Влажность воздуха",
+        "value": 50.0,
+        "unit": "%",
+        "updated_at": "2024-12-12 12:22:48"
+    },
+    {
+        "room_name": "Спальня",
+        "amenity_name": "Уровень освещения",
+        "value": 100.0,
+        "unit": "Люкс",
+        "updated_at": "2024-12-12 12:22:49"
+    },
+    {
+        "room_name": "Кухня",
+        "amenity_name": "Температура",
+        "value": 25.0,
+        "unit": "°C",
+        "updated_at": "2024-12-12 12:22:49"
+    },
+    {
+        "room_name": "Кухня",
+        "amenity_name": "Влажность воздуха",
+        "value": 55.0,
+        "unit": "%",
+        "updated_at": "2024-12-12 12:22:49"
+    },
+    {
+        "room_name": "Кухня",
+        "amenity_name": "Уровень освещения",
+        "value": 200.0,
+        "unit": "Люкс",
+        "updated_at": "2024-12-12 12:22:49"
+    }
+]

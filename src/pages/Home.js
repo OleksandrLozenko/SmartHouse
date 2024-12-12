@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation'; // Убедитесь, что путь до компонента Navigation корректный
 import axios from 'axios';
 import '../App.css'
 import usersData from '../public/users.json';
+import rooms_amenities from '../public/rooms_amenities.json'
 
 function Home() {
   const [message, setMessage] = useState('');
+  const [usersData, setUsersData] = useState([]);
+  const [activeRoom, setActiveRoom] = useState(null); // Отслеживание выбранной комнаты
+
+  // Получение уникальных комнат
+  const uniqueRooms = [...new Set(rooms_amenities.map(room => room.room_name))];
+
+  // Фильтрация удобств для выбранной комнаты
+  const getRoomDetails = (roomName) =>
+    rooms_amenities.filter((room) => room.room_name === roomName);
 
   const sendCommand = async (command) => {
     try {
@@ -16,6 +26,18 @@ function Home() {
       setMessage("Не удалось отправить команду.");
     }
   };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/users');
+        setUsersData(response.data);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных пользователей:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const handleDropdown = (page) => {
     console.log(`Переход к ${page}`);
@@ -37,6 +59,31 @@ function Home() {
               <li key={user.user_id}>{user.login} - {user.email}</li>
             ))}
           </ul>
+        </div>
+        <div>
+        <h2>Комнаты</h2>
+      <div className="room-card-container">
+        {uniqueRooms.map((room, index) => (
+          <div
+            key={index}
+            className={`room-card ${activeRoom === room ? 'active' : ''}`}
+            onClick={() => setActiveRoom(activeRoom === room ? null : room)}
+          >
+            <h3>{room}</h3>
+            {activeRoom === room && (
+              <div className="room-details">
+                <ul>
+                  {getRoomDetails(room).map((detail, i) => (
+                    <li key={i}>
+                      <strong>{detail.amenity_name}:</strong> {detail.value} {detail.unit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
         </div>
       </main>
     </div>

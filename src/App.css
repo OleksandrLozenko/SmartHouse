@@ -121,3 +121,57 @@ th {
     margin-bottom: 0;
   }
 }
+
+/* Контейнер для карточек */
+.room-card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Всегда 2 карточки в ряд */
+  gap: 15px; /* Расстояние между карточками */
+  padding: 10px;
+}
+
+/* Карточка */
+.room-card {
+  background-color: #ffffff; /* Белый фон */
+  border-radius: 10px; /* Скруглённые углы */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+  padding: 20px; /* Внутренние отступы */
+  text-align: center; /* Центрирование текста */
+  font-size: 1.2rem; /* Размер шрифта */
+  font-weight: bold; /* Жирный текст */
+  color: #333; /* Тёмный текст */
+  transition: all 0.3s ease;
+}
+
+.room-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Активная карточка (увеличенная) */
+.room-card.active {
+  grid-column: span 2; /* Занимает всю ширину */
+  grid-row: span 2; /* Увеличенная высота */
+  font-size: 1.5rem;
+  padding: 30px;
+  text-align: left; /* Выравнивание текста влево */
+  position: relative;
+}
+
+/* Детали комнаты внутри увеличенной карточки */
+.room-details {
+  margin-top: 10px;
+}
+
+.room-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.room-details li {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+
