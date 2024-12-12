@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation'; // Убедитесь, что путь до компонента Navigation корректный
 import axios from 'axios';
 import '../App.css'
@@ -7,7 +7,6 @@ import rooms_amenities from '../public/rooms_amenities.json'
 
 function Home() {
   const [message, setMessage] = useState('');
-  const [usersData, setUsersData] = useState([]);
   const [activeRoom, setActiveRoom] = useState(null); // Отслеживание выбранной комнаты
 
   // Получение уникальных комнат
@@ -26,18 +25,6 @@ function Home() {
       setMessage("Не удалось отправить команду.");
     }
   };
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/users');
-        setUsersData(response.data);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных пользователей:", error);
-      }
-    };
-
-    fetchUsers();
-  }, []);
 
   const handleDropdown = (page) => {
     console.log(`Переход к ${page}`);
@@ -61,7 +48,7 @@ function Home() {
           </ul>
         </div>
         <div>
-        <h2>Комнаты</h2>
+          <h2>Комнаты</h2>
       <div className="room-card-container">
         {uniqueRooms.map((room, index) => (
           <div
